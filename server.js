@@ -1,2 +1,3 @@
 const express = require("express");
-const mongose
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
