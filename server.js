@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const redisClient = require("./config/redis");
 
 dotenv.config();
 
@@ -15,3 +16,7 @@ app.get("/", (req, res) => res.send("Property Listing Backend"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+
+// log to know status:
+redisClient.on('connect', () => console.log("Redis connected"));
+redisClient.on('error', (err) => console.error("Redis Client Error", err));
