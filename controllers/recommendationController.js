@@ -13,7 +13,7 @@ exports.createRecommendation = async (req, res) => {
 
     const recommendation = await recommendationService.createRecommendation({ fromUserId, toUserEmail, propertyId });
     // Clear cache for the user's recommendations
-    await redisClient.del(`recommendations:${toUserId}`);
+    await redisClient.del(`recommendations:${toUserEmail}`);
 
     res.status(201).json({ message: "Recommendation created", recommendation });
   } catch (err) {

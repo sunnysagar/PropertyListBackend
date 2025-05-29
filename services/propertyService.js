@@ -15,11 +15,11 @@ exports.getAllProperties = async (filters = {}) => {
 };
 
 exports.getPropertyById = async (id) => {
-    return await Property.findOne({ id: Number(id) });
+    return await Property.findOne({ id: String(id) });
 };
 
 exports.updateProperty = async (id, userId, updateData) => {
-    const property = await Property.findOne({ id: Number(id) });
+    const property = await Property.findOne({ id: String(id) });
     if (!property) throw new Error("Property not found");
     if (property.createdBy.toString() !== userId) throw new Error("Unauthorized");
 
@@ -28,7 +28,7 @@ exports.updateProperty = async (id, userId, updateData) => {
 };
 
 exports.deleteProperty = async (id, userId) => {
-    const property = await Property.findOne({ id: Number(id) });
+    const property = await Property.findOne({ id: String(id) });
     if (!property) throw new Error("Property not found");
     if (property.createdBy.toString() !== userId) throw new Error("Unauthorized");
 

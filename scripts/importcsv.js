@@ -19,18 +19,18 @@ const importCSV = async () => {
     const users = await User.find({});
     const userMap = {};
 
-    // Create a quick map of userType to user document
+    // Create a quick map of userType to user document (only for Owner, Builder, Agent)
     users.forEach(user => {
-      userMap[user.userType.toLowerCase()] = user;  // convert to lowercase for safe matching
+      const type = user.userType ? user.userType.toLowerCase() : null;
+      if (type && ["owner", "builder", "agent"].includes(type)) {
+      userMap[type] = user; // map only valid userTypes
+      }
     });
 
     let csvData = await csv().fromFile("./data/dataset.csv");  
     // slice the csvdata to save 100 data from the csv file for testing
     csvData = csvData.slice(0, 100);
 
-    // Get the last id from the Property collection
-    let lastProperty = await Property.findOne({}).sort({ id: -1 });
-    let nextId = lastProperty ? lastProperty.id + 1 : 1;
 
     const processedData = csvData.map(item => {
       const listedBy = item.listedBy.toLowerCase();
@@ -43,7 +43,7 @@ const importCSV = async () => {
 
       // Assign auto-incremented id
       const property = {
-         id: nextId++,
+        id: item.id,
         title: item.title,
         type: item.type,
         price: parseFloat(item.price),

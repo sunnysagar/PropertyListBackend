@@ -43,7 +43,7 @@ exports.getAllProperties = async (req, res) => {
 
 exports.getPropertyById = async (req, res) => {
   try {
-    const property = await propertyService.getPropertyById(Number(req.params.id));
+    const property = await propertyService.getPropertyById(String(req.params.id));
     if (!property) return res.status(404).json({ message: "Property not found" });
     res.json(property);
   } catch (err) {
@@ -53,7 +53,7 @@ exports.getPropertyById = async (req, res) => {
 
 exports.updateProperty = async (req, res) => {
   try {
-    const property = await propertyService.updateProperty(Number(req.params.id), req.user.email, req.body);
+    const property = await propertyService.updateProperty((req.params.id), req.user.email, req.body);
 
     // Invalidate cache
     await redis.del("all_properties");
@@ -66,7 +66,7 @@ exports.updateProperty = async (req, res) => {
 
 exports.deleteProperty = async (req, res) => {
   try {
-    await propertyService.deleteProperty(Number(req.params.id), req.user.email);
+    await propertyService.deleteProperty((req.params.id), req.user.email);
 
     // Invalidate cache
     await redis.del("all_properties");
