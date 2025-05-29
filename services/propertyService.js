@@ -1,3 +1,8 @@
+/*
+ * Property Service
+ * Handles Business logic of CRUD operations for properties
+ * and integrates with the Property model.
+ */
 const Property = require("../models/Property");
 
 exports.createProperty = async (data) => {

@@ -1,3 +1,8 @@
+/**
+ * Property schema for MongoDB using Mongoose
+ * Defines the structure of property documents
+ * and includes fields for access control.
+ */
 const mongoose = require("mongoose");
 
 const propertySchema = new mongoose.Schema({

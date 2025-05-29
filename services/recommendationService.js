@@ -1,3 +1,9 @@
+/**
+ * Recommendation Service
+ * Handles business logic for property recommendations
+ * and integrates with the Recommendation model.
+ * This service provides functions to create and retrieve recommendations.
+ */
 const Recommendation = require("../models/Recommendation");
 
 exports.createRecommendation = async ({ fromUserId, toUserEmail, propertyId }) => {

@@ -1,3 +1,10 @@
+/**
+ * Import CSV data into MongoDB with auto-incremented IDs and createdBy field
+ * This script reads a CSV file, processes the data, and inserts it into the Property collection.
+ * It also assigns the createdBy field based on the listedBy userType 
+   and auto-increments the id field.
+ */
+
 const csv = require("csvtojson");
 const dotenv = require("dotenv");
 const Property = require("../models/Property")

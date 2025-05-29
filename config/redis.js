@@ -1,3 +1,4 @@
+/* redis configuration setup */
 const redis = require("redis");
 
 const client = redis.createClient({ 

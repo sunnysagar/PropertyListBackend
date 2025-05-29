@@ -1,3 +1,7 @@
+/**
+ * Recommendation Model
+ * Represents a recommendation made by one user to another for a property.
+ */
 const mongoose = require("mongoose");
 
 const recommendationSchema = new mongoose.Schema({

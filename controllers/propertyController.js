@@ -1,3 +1,8 @@
+/*
+  * Property Controller
+  * Handles CRUD operations for properties
+  * and integrates with Redis for caching.
+ */
 const propertyService = require("../services/propertyService");
 const redis = require("../config/redis");
 

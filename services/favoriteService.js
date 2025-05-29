@@ -1,3 +1,8 @@
+/**
+ * Favorite Service
+ * This module handles the business logic for user favorites.
+ * It provides functions to add, remove, and retrieve favorites for a user.
+ */
 const Favorite = require("../models/Favorite");
 
 exports.addFavorite = async (userId, propertyId) => {
