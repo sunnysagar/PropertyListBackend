@@ -14,9 +14,9 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 // Create New user
-exports.signupService = async({name, email, password}) => {
+exports.signupService = async({name, userType, email, password}) => {
     const hashed = await bcrypt.hash(password, 10);
-    await User.create({name, email, password:hashed});
+    await User.create({name, userType, email, password:hashed});
     
 };
 

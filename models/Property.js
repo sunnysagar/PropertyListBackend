@@ -21,7 +21,7 @@ const propertySchema = new mongoose.Schema({
 
   // Important field for access control
   createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: "User",
     required: true
   }
