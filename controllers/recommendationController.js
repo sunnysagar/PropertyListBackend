@@ -4,7 +4,7 @@
  * and integrates with Redis for caching.
  */
 const recommendationService = require("../services/recommendationService");
-const redisClient = require("../config/redisClient");
+const redisClient = require("../config/redis");
 
 exports.createRecommendation = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ exports.createRecommendation = async (req, res) => {
     const recommendation = await recommendationService.createRecommendation({ fromUserId, toUserEmail, propertyId });
     // Clear cache for the user's recommendations
     await redisClient.del(`recommendations:${toUserId}`);
-    
+
     res.status(201).json({ message: "Recommendation created", recommendation });
   } catch (err) {
     res.status(500).json({ message: "Failed to create recommendation", error: err.message });

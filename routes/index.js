@@ -3,6 +3,7 @@
     * This file serves as the main entry point for the API routes.
     * It imports and uses the individual route modules for authentication, property management, favorites, and recommendations.
 */
+
 const express = require("express");
 const router = express.Router();
 
