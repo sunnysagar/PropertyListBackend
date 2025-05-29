@@ -1,9 +1,13 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const redisClient = require("./config/redis");
 
 dotenv.config();
+
+const redisClient = require("./config/redis");
+
+console.log("REDIS_URL:", process.env.REDIS_URL);
+
 
 const app = express();
 connectDB();
