@@ -95,6 +95,8 @@ PropertyListBackend/
 | DELETE | /properties/:id/favorite| Remove property from favorites     |
 | GET    | /users/:id/favorites    | List user's favorite properties    |
 | GET    | /recommendations        | Get property recommendations       |
+> **Note:**  
+> The table above lists the some of the main endpoints. 
 
 ## 🗂️ Database Schema
 
@@ -119,6 +121,8 @@ PropertyListBackend/
 | city       | String   | Property city          |
 | listed by  | String   | Who list that property |
 | createdAt  | Date     | Creation timestamp     |
+> **Note:**  
+> The table above lists the some of the main fields. There are many more fields. 
 
 ### Favorites
 
